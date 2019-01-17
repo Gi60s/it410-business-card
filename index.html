@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Title</title>
+  <link type="text/css" rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div id="app">
+    <div class="preview" :style="{ color: text_color, 'background-color': background }">
+      <p>{{Name}}</p>
+      <p>{{Email}}</p>
+      <p>{{Address}}</p>
+      <p>{{Phone}}</p>
+    </div>
+    <div>Price: ${{price}}</div>
+
+    <form>
+      <p><label for="Name">Name</label> <input v-model="Name" id="Name"></p>
+      <p><label for="Email">Email</label> <input v-model="Email" id="Email"></p>
+      <p><label for="Address">Address</label> <input v-model="Address" id="Address"></p>
+      <p><label for="Phone">Phone</label> <input v-model="Phone" id="Phone"></p>
+      <p><label for="Num-Cards">How Many to Print</label>
+        <select v-model="selected" id="Num-Cards">
+          <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </p>
+      <p>
+        <label>Text Color</label>
+        <div class="color-box" v-for="c in colors" :class="c" @click="setTextColor(c)">{{c}}</div>
+      </p>
+      <p>
+        <label>Background Color</label>
+        <div class="color-box" v-for="c in colors" :class="c" @click="setBackgroundColor(c)">{{c}}</div>
+      </p>
+    </form>
+
+  </div>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
